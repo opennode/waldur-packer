@@ -1,0 +1,58 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7-ks.cfg",
+        "<enter><wait>"
+      ],
+      "disk_size": 8192,
+      "headless": true,
+      "http_directory": ".",
+      "iso_checksum": "becbfcea718898877ab5dc3d875b11ab53cd03c9ef97c83399d8ad5bf5ecdb36",
+      "iso_checksum_type": "sha256",
+      "iso_url": "http://buildlogs.centos.org/rolling/7/isos/x86_64/CentOS-7-x86_64-Minimal.iso",
+      "qemuargs": [
+        [
+          "-m",
+          "1024M"
+        ]
+      ],
+      "shutdown_command": "echo 'installation completed' | shutdown -P now",
+      "ssh_username": "root",
+      "ssh_password": "password",
+      "ssh_wait_timeout": "20m",
+      "type": "qemu",
+      "vm_name": "waldur.qcow2"
+    }
+  ],
+  "provisioners": [
+    {
+      "script": "./bootstrap.sh",
+      "type": "shell"
+    },
+    {
+      "destination": "/etc/nginx/nginx.conf",
+      "source": "./nginx.conf",
+      "type": "file"
+    },
+    {
+        "inline": [
+            "systemctl restart nginx"
+        ],
+        "type": "shell"
+    },
+    {
+      "script": "./init-data.sh",
+      "type": "shell"
+    },
+    {
+        "inline": [
+            "yum clean all",
+            "history -c",
+            "history -w"
+        ],
+        "type": "shell"
+    }
+  ]
+}
