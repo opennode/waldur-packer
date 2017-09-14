@@ -9,7 +9,7 @@ curl https://raw.githubusercontent.com/opennode/waldur-core/develop/docs/guide/b
 su - waldur -c "waldur createstaffuser -u admin -p admin"
 
 # Set up Waldur MasterMind
-yum -y install centos-release-openstack-mitaka
+yum -y install centos-release-openstack-pike
 yum -y install waldur-mastermind
 
 su - waldur -c "waldur migrate --noinput"
