@@ -15,7 +15,7 @@
       "qemuargs": [
         [
           "-m",
-          "1024M"
+          "2048M"
         ]
       ],
       "shutdown_command": "echo 'installation completed' | shutdown -P now",
