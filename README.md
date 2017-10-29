@@ -4,10 +4,10 @@ This repository contains configuration for building Waldur all-in-one demo image
 Building the image
 ------------------
 
-See https://opennode.atlassian.net/wiki/spaces/WD/pages/51150889/Build+Waldur+VM.
+See http://docs.waldur.com/Build+Waldur+VM.
 
 
 Using the image
 ---------------
 
-See https://opennode.atlassian.net/wiki/spaces/WD/pages/51216417/Start+Waldur+VM
+See http://docs.waldur.com/Start+Waldur+VM
